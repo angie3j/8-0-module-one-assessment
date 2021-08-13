@@ -62,16 +62,16 @@ function getHighestMetascore(movies) {
   return 0;
   }
   // Declare a variable to hold the current metascore from movies array. 
-  let highest = [movies[0].metascore];
+  let highest = Number(movies[0].metascore);
   // Create a for..of loop to go through the movies array:
   for (const currentMovie of movies) {
     // Find the metaScore while going through the loop and compare to the currentMetaScore & store the highest
-    if (Number[currentMovie.metascore] > highest) {
-      highest = (Number[currentMovie.metascore]);
+    if (Number(currentMovie.metascore) > highest) {
+      highest = (Number(currentMovie.metascore));
     }
   }
   // Return the highest metascore of all movies. 
-  return Number(highest);
+  return highest;
 }
 // console.log(getHighestMetascore(movies));
 /**
@@ -86,12 +86,20 @@ function getHighestMetascore(movies) {
  *  //> 7.76
  */
 function getAverageIMDBRating(movies) {
+  // If movies array is empty, return 0.
   if (movies.length === 0) {
     return 0;
     }
+    // Declare an accumulator variable to hold the currentImdb.
     let totalAvg = 0;
-    [movies.imdb]
+    // Create a for..of loop to iterate through the movies array. 
+    for (let currentImdb of movies) {
+    totalAvg += Number(currentImdb.imdbRating);
+    }
+    return totalAvg / movies.length; 
   }
+
+getAverageIMDBRating(movies);
 /**
  * countByRating()
  * -----------------------------

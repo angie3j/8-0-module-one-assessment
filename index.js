@@ -3,6 +3,7 @@
 
   Keep in mind that your functions must still have and use a parameter for accepting all movies.
 */
+const movies = require("./movies");
 const exampleMovies = require("./movies");
 // Do not change the line above.
 
@@ -28,8 +29,25 @@ const exampleMovies = require("./movies");
       "James and the Giant Peach",
     ];
  */
-function getAllMovieTitles() {}
+function getAllMovieTitles(movies) {
+// Accumulator variable to store movie titles
+// let totalMovies = [];
+// if (movies.length === 0) {
+//   return [];
+// }
+// // Create a variable, to account for edge case: movies array is empty.
+// //let arrMovieTitles = [];
+// // Create a for..of loop to search for the movie titles in the movies array. Use the .push method to collect all movie titles. 
+// for (let i = 0; i < movies.length; i++) {
+//   let movieTitle = movies.title[i];
+//   //totalMovies = movies.title[i];
+//   totalMovies.push(movieTitle);
+// }
+// //Return the movie titles in an array of strings. 
+//   return totalMovies;
+// }
 
+//console.log(getAllMovieTitles(movies));
 /**
  * getHighestMetascore()
  * -----------------------------
@@ -41,8 +59,28 @@ function getAllMovieTitles() {}
  *  getHighestMetascore(movies);
  *  //> 96
  */
-function getHighestMetascore() {}
+function convertToNumb(n) {
+  return Number(n);
+}
 
+function getHighestMetascore(movies) {
+  // If movies array is empty, return 0.
+  if (movies.length === 0) {
+  return 0;
+  }
+  // Declare a variable to hold the current metascore from movies array. 
+  let highest = movies.metascore;
+  // Create a for..of loop to go through the movies array:
+  for (const currentMovie of movies) {
+    // Find the metaScore while going through the loop and compare to the currentMetaScore. 
+    if (Number(currentMovie.metascore) > highest) {
+      highest = Number(currentMovie.metascore);
+    }
+  }
+  // Return the highest metascore of all movies. 
+  return convertToNumb(highest);
+}
+//console.log(getHighestMetascore(movies));
 /**
  * getAverageIMDBRating()
  * -----------------------------

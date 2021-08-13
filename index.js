@@ -64,7 +64,7 @@ function getHighestMetascore(movies) {
   // Declare a variable to hold the current metascore from movies array. 
   let highest = Number(movies[0].metascore);
   // Create a for..of loop to go through the movies array:
-  for (const currentMovie of movies) {
+  for (let currentMovie of movies) {
     // Find the metaScore while going through the loop and compare to the currentMetaScore & store the highest
     if (Number(currentMovie.metascore) > highest) {
       highest = (Number(currentMovie.metascore));
@@ -99,7 +99,7 @@ function getAverageIMDBRating(movies) {
     return totalAvg / movies.length; 
   }
 
-getAverageIMDBRating(movies);
+// getAverageIMDBRating(movies);
 /**
  * countByRating()
  * -----------------------------
@@ -112,9 +112,24 @@ getAverageIMDBRating(movies);
  *  //> { G: 3, PG: 7 }
  */
 function countByRating(movies) {
-
+// If movies array is empty, return {}.
+if (movies.length === 0) {
+  return {};
+  }
+// Declare a variable to hold the currenRrating for movies. 
+let currentRating = {};
+// Create a for..of loop to iterate throught the movies array.
+for (let currentMovie of movies) {
+  if (!currentRating[movie.rated]) {
+  currentRating[movie.rated] = 1
+} else {
+currentRating[movie.rated]++;
 }
-
+}
+// Return an object with keys = movie ratings and values = how many movies in the array have that same rating
+return currentRating;
+}
+countByRating(movies);
 /**
  * findById()
  * -----------------------------
